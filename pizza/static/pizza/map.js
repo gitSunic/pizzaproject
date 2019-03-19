@@ -7,7 +7,6 @@ function mapcreate(ids) {
         myMap.controls.remove("fullscreenControl");myMap.controls.remove('searchControl');myMap.controls.remove('geolocationControl');myMap.controls.remove('trafficControl');myMap.controls.remove('typeSelector')
         var myGeoObjects0 = [];
         function obj(id, lng, lat, company, metro, address, time){
-            console.log(id);
             var presetName;var content = "";var name = "";
             var icon = "../static/pizza/img/"+company+".png";
             var smetro = "";
