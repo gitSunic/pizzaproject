@@ -19,100 +19,100 @@
 	</style>
 -->
 </head>
+<div id="preloader">
+	<div id="loader"></div>
+</div>
 <body>
-	<p id="loading">идет загрузка...</p>
-	<div id="body">
-		<div id="header"><span>Where can I eat some PIZZA?</span></div>
-		<div id="map"></div>
-		<div id="form">
-			<form action="attr/" method="post">
-				{% csrf_token %}
-				<div class="d-flex flex-row justify-content-between" id="menu">
-					<div class="col-3 attr-li d-flex justify-content-center align-items-center">Фирма</div>
-					<div class="col-3 attr-li d-flex justify-content-center align-items-center">Время</div>
-					<div class="col-3 attr-li d-flex justify-content-center align-items-center">Метро</div>
-					<div class="col-3 attr-li d-flex justify-content-center align-items-center" id="attr-show"><input type="submit" value="Показать" id="attr-btn"></div>
-				</div>
-				<div class="d-flex flex-row justify-content-between" style="position: absolute;top: 0;left: 0;width: 400px;height: 40px;background-color: rgba(0,0,0,0);">
-					<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-co"></div>
-					<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-ti"></div>
-					<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-me"></div>
-					<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-show"><input type="submit" value="Показать" id="attr-btn"></div>
-				</div>
-<!-- 			<div style="position: absolute;top: 0;left: 0;width: 400px;height: 40px;background-color: rgba(0,0,0,0);"></div> --> -->
-				<div id="attr-co-open">
-					<label class="attr-co-label" id="attr-co-1">Додо Пицца<input type="checkbox" name="company" class="attr-co-content" value="dodopizza"><span class="attr-co-span"></span></label>
-					<label class="attr-co-label" id="attr-co-2">Pizza Hut<input type="checkbox" name="company" class="attr-co-content" value="pizzahut"><span class="attr-co-span"></span></label>
-					<label class="attr-co-label" id="attr-co-3">Ollis Club<input type="checkbox" name="company" class="attr-co-content" value="ollisclub"><span class="attr-co-span"></span></label>
-					<label class="attr-co-label" id="attr-co-4">Папа Джонс<input type="checkbox" name="company" class="attr-co-content" value="papajohnes"><span class="attr-co-span"></span></label>
-				</div>
-				<div id="attr-ti-open">
-					<label>Во сколько Вы планируете прийти?<input type="text" placeholder="10:00" name="time"></label>
-				</div>
+	{{info}}
+	<div id="header"><span>Where can I eat some PIZZA?</span></div>
+	<div id="map"></div>
+	<div id="form">
+		<form action="attr/" method="post">
+			{% csrf_token %}
+			<div class="d-flex flex-row justify-content-between" id="menu">
+				<div class="col-3 attr-li d-flex justify-content-center align-items-center">Фирма</div>
+				<div class="col-3 attr-li d-flex justify-content-center align-items-center">Время</div>
+				<div class="col-3 attr-li d-flex justify-content-center align-items-center">Метро</div>
+				<div class="col-3 attr-li d-flex justify-content-center align-items-center" id="attr-show"></div>
+			</div>
+			<div class="d-flex flex-row justify-content-between" style="position: absolute;top: 0;left: 0;width: 400px;height: 40px;background-color: rgba(0,0,0,0);">
+				<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-co"></div>
+				<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-ti"></div>
+				<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-me"></div>
+				<div class="col-3 attr-li-m d-flex justify-content-center align-items-center" id="attr-show"><input type="submit" value="Показать" id="attr-btn"></div>
+			</div>
+			<div id="attr-co-open">
+				<label class="attr-co-label" id="attr-co-1">Додо Пицца<input type="checkbox" name="company" class="attr-co-content" value="dodopizza"><span class="attr-co-span"></span></label>
+				<label class="attr-co-label" id="attr-co-2">Pizza Hut<input type="checkbox" name="company" class="attr-co-content" value="pizzahut"><span class="attr-co-span"></span></label>
+				<label class="attr-co-label" id="attr-co-3">Ollis Club<input type="checkbox" name="company" class="attr-co-content" value="ollisclub"><span class="attr-co-span"></span></label>
+				<label class="attr-co-label" id="attr-co-4">Папа Джонс<input type="checkbox" name="company" class="attr-co-content" value="papajohnes"><span class="attr-co-span"></span></label>
+			</div>
+			<div id="attr-ti-open">
+				<label>Во сколько Вы планируете прийти?<input type="text" placeholder="10:00" name="time"></label>
+			</div>
 <!-- === Станции Метро СПб === -->
-				<div id="attr-me-open">
-					<label class="attr-me-label" id="me-5-1"><input type="checkbox" name="metro" class="attr-me-content" value="Комендантский проспект"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-2"><input type="checkbox" name="metro" class="attr-me-content" value="Старая Деревня"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-3"><input type="checkbox" name="metro" class="attr-me-content" value="Крестовский остров"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-4"><input type="checkbox" name="metro" class="attr-me-content" value="Чкаловская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-5"><input type="checkbox" name="metro" class="attr-me-content" value="Спортивная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-6"><input type="checkbox" name="metro" class="attr-me-content" value="Адмиралтейская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-7"><input type="checkbox" name="metro" class="attr-me-content" value="Садовая"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-5-8"><input type="checkbox" name="metro" class="attr-me-content" value="Звенигородская"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-5-9"><input type="checkbox" name="metro" class="attr-me-content" value="Обводный канал 1"><span class="attr-me-span-big-2"></span></label>
-					<label class="attr-me-label" id="me-5-10"><input type="checkbox" name="metro" class="attr-me-content" value="Волковская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-11"><input type="checkbox" name="metro" class="attr-me-content" value="Бухарестская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-5-12"><input type="checkbox" name="metro" class="attr-me-content" value="Международная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-4-2"><input type="checkbox" name="metro" class="attr-me-content" value="Достоевская"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-4-3"><input type="checkbox" name="metro" class="attr-me-content" value="Лиговский проспект"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-4-4"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Александра Невского 2"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-4-5"><input type="checkbox" name="metro" class="attr-me-content" value="Новочеркасская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-4-6"><input type="checkbox" name="metro" class="attr-me-content" value="Ладожская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-4-7"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект Большевиков"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-4-8"><input type="checkbox" name="metro" class="attr-me-content" value="Улица Дыбенко"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-1"><input type="checkbox" name="metro" class="attr-me-content" value="Приморская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-2"><input type="checkbox" name="metro" class="attr-me-content" value="Василеостровская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-3"><input type="checkbox" name="metro" class="attr-me-content" value="Гостиный Двор"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-3-4"><input type="checkbox" name="metro" class="attr-me-content" value="Маяковская"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-3-6"><input type="checkbox" name="metro" class="attr-me-content" value="Елизаровская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-7"><input type="checkbox" name="metro" class="attr-me-content" value="Ломоносовская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-8"><input type="checkbox" name="metro" class="attr-me-content" value="Пролетарская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-9"><input type="checkbox" name="metro" class="attr-me-content" value="Обухово"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-3-10"><input type="checkbox" name="metro" class="attr-me-content" value="Рыбацкое"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-1"><input type="checkbox" name="metro" class="attr-me-content" value="Парная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-2"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект просвещения"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-3"><input type="checkbox" name="metro" class="attr-me-content" value="Озерки"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-4"><input type="checkbox" name="metro" class="attr-me-content" value="Удельная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-5"><input type="checkbox" name="metro" class="attr-me-content" value="Пионерская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-6"><input type="checkbox" name="metro" class="attr-me-content" value="Чёрная речка"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-7"><input type="checkbox" name="metro" class="attr-me-content" value="Петроградская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-8"><input type="checkbox" name="metro" class="attr-me-content" value="Горьковская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-11"><input type="checkbox" name="metro" class="attr-me-content" value="Технологический институт 1"><span class="attr-me-span-big"></span></label>
-					<label class="attr-me-label" id="me-2-12"><input type="checkbox" name="metro" class="attr-me-content" value="Фрунзенская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-13"><input type="checkbox" name="metro" class="attr-me-content" value="Московские Ворота"><span class="attr-me-span-big-2"></span></label>
-					<label class="attr-me-label" id="me-2-14"><input type="checkbox" name="metro" class="attr-me-content" value="Электросила"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-15"><input type="checkbox" name="metro" class="attr-me-content" value="Парк Победы"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-16"><input type="checkbox" name="metro" class="attr-me-content" value="Московская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-17"><input type="checkbox" name="metro" class="attr-me-content" value="Звёздная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-2-18"><input type="checkbox" name="metro" class="attr-me-content" value="Купчино"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-1"><input type="checkbox" name="metro" class="attr-me-content" value="Девяткино"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-2"><input type="checkbox" name="metro" class="attr-me-content" value="Гражданский проспект"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-3"><input type="checkbox" name="metro" class="attr-me-content" value="Академическая"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-4"><input type="checkbox" name="metro" class="attr-me-content" value="Политехническая"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-5"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Мужества"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-6"><input type="checkbox" name="metro" class="attr-me-content" value="Лесная"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-7"><input type="checkbox" name="metro" class="attr-me-content" value="Выборгская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-8"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Ленина"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-9"><input type="checkbox" name="metro" class="attr-me-content" value="Чернышевская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-14"><input type="checkbox" name="metro" class="attr-me-content" value="Балтийская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-15"><input type="checkbox" name="metro" class="attr-me-content" value="Нарвская"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-16"><input type="checkbox" name="metro" class="attr-me-content" value="Кировский завод"><span class="attr-me-span-big-2"></span></label>
-					<label class="attr-me-label" id="me-1-17"><input type="checkbox" name="metro" class="attr-me-content" value="Автово"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-18"><input type="checkbox" name="metro" class="attr-me-content" value="Ленинский проспект"><span class="attr-me-span"></span></label>
-					<label class="attr-me-label" id="me-1-19"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект Ветеранов"><span class="attr-me-span"></span></label>
-				</div>
-			</form>
-		</div>
+			<div id="attr-me-open">
+				<label class="attr-me-label" id="me-5-1"><input type="checkbox" name="metro" class="attr-me-content" value="Комендантский проспект"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-2"><input type="checkbox" name="metro" class="attr-me-content" value="Старая Деревня"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-3"><input type="checkbox" name="metro" class="attr-me-content" value="Крестовский остров"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-4"><input type="checkbox" name="metro" class="attr-me-content" value="Чкаловская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-5"><input type="checkbox" name="metro" class="attr-me-content" value="Спортивная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-6"><input type="checkbox" name="metro" class="attr-me-content" value="Адмиралтейская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-7"><input type="checkbox" name="metro" class="attr-me-content" value="Садовая"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-5-8"><input type="checkbox" name="metro" class="attr-me-content" value="Звенигородская"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-5-9"><input type="checkbox" name="metro" class="attr-me-content" value="Обводный канал 1"><span class="attr-me-span-big-2"></span></label>
+				<label class="attr-me-label" id="me-5-10"><input type="checkbox" name="metro" class="attr-me-content" value="Волковская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-11"><input type="checkbox" name="metro" class="attr-me-content" value="Бухарестская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-5-12"><input type="checkbox" name="metro" class="attr-me-content" value="Международная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-4-2"><input type="checkbox" name="metro" class="attr-me-content" value="Достоевская"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-4-3"><input type="checkbox" name="metro" class="attr-me-content" value="Лиговский проспект"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-4-4"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Александра Невского 2"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-4-5"><input type="checkbox" name="metro" class="attr-me-content" value="Новочеркасская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-4-6"><input type="checkbox" name="metro" class="attr-me-content" value="Ладожская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-4-7"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект Большевиков"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-4-8"><input type="checkbox" name="metro" class="attr-me-content" value="Улица Дыбенко"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-1"><input type="checkbox" name="metro" class="attr-me-content" value="Приморская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-2"><input type="checkbox" name="metro" class="attr-me-content" value="Василеостровская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-3"><input type="checkbox" name="metro" class="attr-me-content" value="Гостиный Двор"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-3-4"><input type="checkbox" name="metro" class="attr-me-content" value="Маяковская"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-3-6"><input type="checkbox" name="metro" class="attr-me-content" value="Елизаровская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-7"><input type="checkbox" name="metro" class="attr-me-content" value="Ломоносовская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-8"><input type="checkbox" name="metro" class="attr-me-content" value="Пролетарская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-9"><input type="checkbox" name="metro" class="attr-me-content" value="Обухово"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-3-10"><input type="checkbox" name="metro" class="attr-me-content" value="Рыбацкое"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-1"><input type="checkbox" name="metro" class="attr-me-content" value="Парная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-2"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект просвещения"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-3"><input type="checkbox" name="metro" class="attr-me-content" value="Озерки"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-4"><input type="checkbox" name="metro" class="attr-me-content" value="Удельная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-5"><input type="checkbox" name="metro" class="attr-me-content" value="Пионерская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-6"><input type="checkbox" name="metro" class="attr-me-content" value="Чёрная речка"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-7"><input type="checkbox" name="metro" class="attr-me-content" value="Петроградская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-8"><input type="checkbox" name="metro" class="attr-me-content" value="Горьковская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-11"><input type="checkbox" name="metro" class="attr-me-content" value="Технологический институт 1"><span class="attr-me-span-big"></span></label>
+				<label class="attr-me-label" id="me-2-12"><input type="checkbox" name="metro" class="attr-me-content" value="Фрунзенская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-13"><input type="checkbox" name="metro" class="attr-me-content" value="Московские Ворота"><span class="attr-me-span-big-2"></span></label>
+				<label class="attr-me-label" id="me-2-14"><input type="checkbox" name="metro" class="attr-me-content" value="Электросила"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-15"><input type="checkbox" name="metro" class="attr-me-content" value="Парк Победы"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-16"><input type="checkbox" name="metro" class="attr-me-content" value="Московская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-17"><input type="checkbox" name="metro" class="attr-me-content" value="Звёздная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-2-18"><input type="checkbox" name="metro" class="attr-me-content" value="Купчино"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-1"><input type="checkbox" name="metro" class="attr-me-content" value="Девяткино"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-2"><input type="checkbox" name="metro" class="attr-me-content" value="Гражданский проспект"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-3"><input type="checkbox" name="metro" class="attr-me-content" value="Академическая"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-4"><input type="checkbox" name="metro" class="attr-me-content" value="Политехническая"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-5"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Мужества"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-6"><input type="checkbox" name="metro" class="attr-me-content" value="Лесная"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-7"><input type="checkbox" name="metro" class="attr-me-content" value="Выборгская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-8"><input type="checkbox" name="metro" class="attr-me-content" value="Площадь Ленина"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-9"><input type="checkbox" name="metro" class="attr-me-content" value="Чернышевская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-14"><input type="checkbox" name="metro" class="attr-me-content" value="Балтийская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-15"><input type="checkbox" name="metro" class="attr-me-content" value="Нарвская"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-16"><input type="checkbox" name="metro" class="attr-me-content" value="Кировский завод"><span class="attr-me-span-big-2"></span></label>
+				<label class="attr-me-label" id="me-1-17"><input type="checkbox" name="metro" class="attr-me-content" value="Автово"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-18"><input type="checkbox" name="metro" class="attr-me-content" value="Ленинский проспект"><span class="attr-me-span"></span></label>
+				<label class="attr-me-label" id="me-1-19"><input type="checkbox" name="metro" class="attr-me-content" value="Проспект Ветеранов"><span class="attr-me-span"></span></label>
+			</div>
+		</form>
 	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -6,7 +6,7 @@ SECRET_KEY = 'xj_qe&iv!l0f4$o*x77wrdpm7&o$gx!u314s9pu(asy(lfdr*c'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['pizzasunic.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pizza',
@@ -46,7 +46,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pizzapro.wsgi.application'databases
+WSGI_APPLICATION = 'pizzapro.wsgi.application'
 
 DATABASES = {
     'default': {

@@ -7,17 +7,17 @@ function mapcreate(ids) {
         myMap.controls.remove("fullscreenControl");myMap.controls.remove('searchControl');myMap.controls.remove('geolocationControl');myMap.controls.remove('trafficControl');myMap.controls.remove('typeSelector')
         var myGeoObjects0 = [];
         function obj(id, lng, lat, company, metro, address, time){
-            var presetName;var content = "";var name = "";
+            var presetName;var content = "";var name = "";var color;
             var icon = "../static/pizza/img/"+company+".png";
             var smetro = "";
             for (var i = metro.length - 1; i >= 0; i--) {
                 smetro += metro[i];
             }
             switch(company) {
-                case "pizzahut": presetName = "islands#redIcon"; name = "Pizza Hut" + " (" + id + ")"; break;
-                case "ollisclub": presetName = "islands#greenIcon"; name = "Ollis Club" + " (" + id + ")"; break;
-                case "dodopizza": presetName = "islands#orangeIcon"; name = "Додо Пицца" + " (" + id + ")"; break;
-                case "papajohnes": presetName = "islands#blueIcon"; name = "Папа Джонс" + " (" + id + ")"; break;
+                case "pizzahut": color = 'orange'; name = "Pizza Hut" + " (" + id + ")"; break;
+                case "ollisclub": color = '#92000a'; name = "Ollis Club" + " (" + id + ")"; break;
+                case "dodopizza": color = '#ff2400'; name = "Додо Пицца" + " (" + id + ")"; break;
+                case "papajohnes": color = '#ff00ff'; name = "Папа Джонс" + " (" + id + ")"; break;
             }
             content += "<table><tr><td><img src=\"../static/pizza/img/"+company+".png\" width=\"100px\" height=\"100px\"></td><td style=\"vertical-align: top\">";
             content += "<span style=\"color: blue;font-size: 18px\">"+name+"</span><br>";
@@ -37,7 +37,8 @@ function mapcreate(ids) {
                 //     iconImageSize: [30,30],
                 //     iconImageOffset: [-5,-38]
                 // }, {
-                    preset: presetName
+                    preset: presetName,
+                    iconColor: color
                 }
             );
             myGeoObjects0.push(myGeoObject);
