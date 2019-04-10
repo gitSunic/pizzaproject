@@ -9,6 +9,8 @@ from collections import Counter
 import operator, json, datetime
 
 ids = []
+ops_check = []
+ops_time = []
 d = json.load(open('pizza/static/pizza/points.json', encoding="utf8"))
 for i in range(0, len(d)):
 	ids.append(i)
@@ -16,18 +18,19 @@ for i in range(0, len(d)):
 def index(request):
 	out = []
 	if not -1 in ids:
-		for i in ids:
-			out.append(i)
-		return render(request, 'index.html', {"ids":out})
+		return render(request, 'index.html', {"ids":ids, "check":ops_check, "time":ops_time})
 	else:
-		return render(request, 'index.html', {"ids":[]})
+		return render(request, 'index.html', {"ids":[], "check":ops_check, "time":ops_time})
 def attr(request):
 	ids.clear()
-	ides = []
 	if request.POST:
 		box = request.POST.getlist("company")
+		# return render(request, 'index.html', {"info":box})
 		time_str = request.POST.get("time")
+		ops_time.clear()
 		metro = request.POST.getlist("metro")
+		ops_check.clear()
+		ops_time.append(time_str)
 		for i in range(0,len(d)):
 			out = True
 			if len(box) > 0:
@@ -75,4 +78,8 @@ def attr(request):
 					out = False
 			if out:
 				ids.append(i)
+		for i in box:
+			ops_check.append(i)
+		for i in metro:
+			ops_check.append(i)
 	return redirect('/')
