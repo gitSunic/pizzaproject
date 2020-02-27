@@ -1,2 +1,2 @@
 # pizzaproject
-in this project I learned ymaps API
+Во время работы над этим проектом я познакомился с _ymaps API_
